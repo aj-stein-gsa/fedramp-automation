@@ -23,10 +23,10 @@ After running unit tests, to view the generated report, open the following file:
 To view generated SARIF reports, browse to the following directory:  
 `<cloned-repository-path>/sarif`
 
-# Creating custom unit tests
+## Creating custom unit tests
 This section describes steps for creating your own OSCAL Metaschema constraints and YAML unit tests.  
 
-## Creating unit tests
+### Creating unit tests
 To create FedRAMP OSCAL unit tests
 1. Open the terminal.  
 2. To change to the **constraints** directory, run the following command:  
