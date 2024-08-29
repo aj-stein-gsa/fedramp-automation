@@ -45,5 +45,5 @@ Sample **pass** and **fail** YAML unit test files reside in the following direct
 `<cloned-repository-path>/src/validations/constraints/unit-tests`
 
 # Providing feedback
-If you encounter a bug or have a feature to request, submit an issue at [https://github.com/GSA/fedramp-automation/issues/new/choose](https://github.com/GSA/fedramp-automation/issues/new/choose).  
 
+Please see the [top-level instructions CONTRIBUTING](../../../CONTRIBUTING.md#issue-reporting-and-handling) information about feedback.
