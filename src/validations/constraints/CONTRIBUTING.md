@@ -1,10 +1,11 @@
-# Testing FedRAMP OSCAL constraints
-This section describes running unit tests and analyzing test results.
+# Contributing to constraints
 
-## Executing out-of-the-box unit tests
-OSCAL JS comes with a large set of predefined FedRAMP OSCAL Metaschema constraints.
+FedRAMP offers a set of predefined checks to validate documents in OSCAL format using the [Metaschema constraint syntax](https://pages.nist.gov/metaschema/specification/syntax/constraints/). This area of the code base includes the Metaschema constraint files, unit tests, and a test harness to operate them. 
 
-To execute unit tests that come with the tool
+## Running existing tests
+
+To run existing unit tests that come with the tool
+
 1. Open the terminal.  
 2. To change to the root directory of the cloned repository, run the following command:  
    `$ cd <cloned-repository-path>`  
