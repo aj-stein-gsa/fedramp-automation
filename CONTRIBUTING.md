@@ -8,6 +8,12 @@ Contributions are welcome to this project repository.
 
 For more information on the project's current needs and priorities, see the project's GitHub issue tracker (discussed below). Please refer to the [guide on how to contribute to open source](https://opensource.guide/how-to-contribute/) for general information on contributing to an open source project.
 
+This repository has code and data for different goals. You can find details on what you need to contribute for each task below.
+
+### Creating and updating OSCAL constraints tests
+
+See [CONTRIBUTING.md](./src/validations/constraints/CONTRIBUTING.md) on how to create and update OSCAL-based constraint tests.
+
 ## Issue reporting and handling
 
 All requests for changes and enhancements to the repository are initiated through the project's [GitHub issue tracker](https://github.com/GSA/fedramp-automation/issues). To initiate a request, please [create a new issue](https://help.github.com/articles/creating-an-issue/).
