@@ -15,6 +15,17 @@
           <information-type-id>invalid-information-type</information-type-id>
         </categorization>
       </information-type>
+      <!-- 
+        This information type is to enhance the negative test because the constraint filtes on @system.
+        See the following work item for more details: 
+        https://github.com/GSA/fedramp-automation/pull/764#issuecomment-2402896605
+      -->
+      <information-type  uuid="44444444-0000-4000-9000-000000000004">
+        <categorization system="https://example.org/other-data-categorization-scheme">
+          <!-- Deviously try a NIST SP 800-60 Volume 2 Revision 1 type without the required system. -->
+          <information-type-id>C.2.8.12</information-type-id>
+        </categorization>
+      </information-type>          
     </system-information>
   </system-characteristics>
 
