@@ -101,6 +101,29 @@
           <base>fips-199-low</base>
         </availability-impact>
       </information-type>
+      <!-- 
+        This information type is to enhance the positive test because the constraint filtes on @system.
+        See the following work item for more details: 
+        https://github.com/GSA/fedramp-automation/pull/764#issuecomment-2402896605
+      -->
+      <information-type  uuid="44444444-0000-4000-9000-000000000004">
+        <title>Other Financial Information</title>
+        <description>
+          <p>Contains financial data related to organizational operations, but not based on the criteria in NIST.SP.800-60v2r1.</p>
+        </description>
+        <categorization system="https://example.org/other-data-categorization-scheme">
+          <information-type-id>C.2.8.12</information-type-id>
+        </categorization>
+        <confidentiality-impact>
+          <base>fips-199-high</base>
+        </confidentiality-impact>
+        <integrity-impact>
+          <base>fips-199-moderate</base>
+        </integrity-impact>
+        <availability-impact>
+          <base>fips-199-low</base>
+        </availability-impact>
+      </information-type>      
     </system-information>
     <security-impact-level>
       <security-objective-confidentiality>fips-199-moderate</security-objective-confidentiality>
