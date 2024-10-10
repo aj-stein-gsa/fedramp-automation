@@ -7,21 +7,23 @@
     <security-sensitivity-level>INVALID-fips-199-moderate</security-sensitivity-level>
     <system-information>
       <information-type  uuid="33333333-0000-4000-9000-000000000003">
+        <!-- Switching wrong to any one of the following three will allow the document to be valid, so long as not all three are wrong. -->
         <confidentiality-impact>
-          <base>INVALID-fips-199-high</base>
+          <base>wrong</base>
         </confidentiality-impact>
         <integrity-impact>
-          <base>INVALID-fips-199-moderate</base>
+          <base>fips-199-high</base>
         </integrity-impact>
         <availability-impact>
-          <base>INVALID-fips-199-low</base>
+          <base>fips-199-low</base>
         </availability-impact>
       </information-type>
     </system-information>
     <security-impact-level>
-      <security-objective-confidentiality>INVALID-fips-199-moderate</security-objective-confidentiality>
-      <security-objective-integrity>INVALID-fips-199-moderate</security-objective-integrity>
-      <security-objective-availability>INVALID-fips-199-moderate</security-objective-availability>
+      <!-- Switching wrong to any one of the following three will allow the document to be valid, so long as not all three are wrong. -->
+      <security-objective-confidentiality>fips-199-moderate</security-objective-confidentiality>
+      <security-objective-integrity>fips-199-moderate</security-objective-integrity>
+      <security-objective-availability>wrong</security-objective-availability>
     </security-impact-level>
   </system-characteristics>
 </system-security-plan>
