@@ -1,0 +1,7 @@
+test-case:
+  name: Negative Test for nature-of-agreement
+  description: This test case validates the behavior of constraint nature-of-agreement
+  content: ../content/ssp-nature-of-agreement-INVALID.xml
+  expectations:
+    - constraint-id: nature-of-agreement
+      result: fail

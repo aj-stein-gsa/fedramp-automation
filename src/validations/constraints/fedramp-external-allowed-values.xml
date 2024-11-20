@@ -421,6 +421,22 @@
             </allowed-values>
 
         </constraints>
-    </context>      
+    </context>
+    
+    <context>
+        <metapath target="/system-security-plan/system-implementation/leveraged-authorization" />
+        <constraints>
+            <allowed-values id="nature-of-agreement" allow-other="yes" target="prop[@name='nature-of-agreement' and @ns='https://fedramp.gov/ns/oscal']/@value" level="WARNING">
+                <formal-name>Nature of Agreement Test</formal-name>
+                <description>This should provide a warning when any other value, which is allowed, is used for awareness.</description>
+                <enum value="contract"> A contract between the CSP and the organization that owns the leveraged system.</enum>
+                <enum value="mou"> A memorandum of understanding between the CSP and the organization that owns the leveraged system.</enum>
+                <enum value="sla"> A service-level agreement between the CSP and the organization that owns the leveraged system.</enum>
+                <enum value="eula"> An end user license agreement between the CSP and the organization that owns the leveraged system.</enum>
+                <enum value="license"> An application license agreement between the CSP and the organization that owns the leveraged system.</enum>
+                <enum value="other"> An non-typical agreement between the CSP and the organization that owns the leveraged system. Explain in remarks.</enum>
+            </allowed-values>
+        </constraints>
+    </context>
 
 </metaschema-meta-constraints>

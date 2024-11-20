@@ -73,6 +73,7 @@ Examples:
   | has-identity-assurance-level |
   | has-incident-response-plan |
   | has-information-system-contingency-plan |
+  | has-inventory-items |
   | has-network-architecture |
   | has-network-architecture-diagram |
   | has-network-architecture-diagram-caption |
@@ -121,6 +122,7 @@ Examples:
   | scan-type |
   | security-level |
   | security-sensitivity-level-matches-security-impact-level |
+  | unique-inventory-item-asset-id |
   | user-has-authorized-privilege |
   | user-has-privilege-level |
   | user-has-role-id |
@@ -302,6 +304,8 @@ Examples:
   | marking-PASS.yaml |
   | missing-response-components-FAIL.yaml |
   | missing-response-components-PASS.yaml |
+  | nature-of-agreement-FAIL.yaml |
+  | nature-of-agreement-PASS.yaml |
   | party-has-name-FAIL.yaml |
   | party-has-name-PASS.yaml |
   | privilege-level-FAIL.yaml |
