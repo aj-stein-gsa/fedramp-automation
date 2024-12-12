@@ -631,7 +631,7 @@
         <constraints>
             <let var="authorization-boundary-href" expression="@href"/>
             <expect id="has-authorization-boundary-diagram-link-href-target"
-            target=".[ancestor::*:authorization-boundary and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($authorization-boundary-href, '#') and prop[@name='type' and @value='image' and @class='authorization-boundary']]) = 1" level="ERROR">
+            target=".[ancestor::Q{http://csrc.nist.gov/ns/oscal/1.0}authorization-boundary and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($authorization-boundary-href, '#') and prop[@name='type' and @value='image' and @class='authorization-boundary']]) = 1" level="ERROR">
                 <formal-name>Has Authorization Boundary Diagram Link Href Target</formal-name>
                 <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary"/>
                 <message>A FedRAMP SSP MUST include an authorization boundary diagram. DEBUG: ancestor: [ancestor::*:authorization-boundary => path()]</message>
@@ -643,7 +643,7 @@
         <metapath target="/system-security-plan/system-characteristics/data-flow/diagram/link"/>
         <constraints>
             <let var="data-flow-href" expression="@href"/>
-            <expect id="has-data-flow-diagram-link-href-target" target=".[ancestor::*:data-flow and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($data-flow-href, '#') and prop[@name='type' and @value='image' and @class='data-flow']]) = 1" level="ERROR">
+            <expect id="has-data-flow-diagram-link-href-target" target=".[ancestor::Q{http://csrc.nist.gov/ns/oscal/1.0}data-flow and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($data-flow-href, '#') and prop[@name='type' and @value='image' and @class='data-flow']]) = 1" level="ERROR">
                 <formal-name>Has Data Flow Diagram Link Href Target</formal-name>
                 <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow"/>
                 <message>A FedRAMP SSP MUST include a data flow diagram. DEBUG: ancestor: [ancestor::*:authorization-boundary => path()]</message>
@@ -655,7 +655,7 @@
         <metapath target="/system-security-plan/system-characteristics/network-architecture/diagram/link"/>
         <constraints>
             <let var="network-architecture-href" expression="@href"/>
-            <expect id="has-network-architecture-diagram-link-href-target" target=".[ancestor::*:network-architecture and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($network-architecture-href, '#') and prop[@name='type' and @value='image' and @class='network-architecture']]) = 1" level="ERROR">
+            <expect id="has-network-architecture-diagram-link-href-target" target=".[ancestor::Q{http://csrc.nist.gov/ns/oscal/1.0}network-architecture and @rel='diagram']" test="doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($network-architecture-href, '#') and prop[@name='type' and @value='image' and @class='network-architecture']]) = 1" level="ERROR">
                 <formal-name>Has Network Architecture Diagram Link Href Target</formal-name>
                 <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture"/>
                 <message>A FedRAMP SSP MUST include a network architecture diagram.DEBUG: ancestor: [ancestor::*:authorization-boundary => path()]</message>
