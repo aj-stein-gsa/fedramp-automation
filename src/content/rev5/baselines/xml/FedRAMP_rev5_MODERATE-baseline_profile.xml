@@ -2115,7 +2115,10 @@
 			<add position="starting" by-id="ac-1_smt.a">
 				<prop ns="https://fedramp.gov/ns/oscal" name="response-point" value="You must fill in this response point.">
 					<remarks><p>This response must address all control sub-statement requirements.</p></remarks>
-				</prop>		
+				</prop>
+				<prop ns="https://fedramp.gov/ns/oscal" name="required-attachment-type"  value="policy">
+					<remarks><p>A policy that addresses Access Control must be associated with AC-1 Part A.</p></remarks>
+				</prop>
 			</add>
 			<add position="starting" by-id="ac-1_smt.b">
 				<prop ns="https://fedramp.gov/ns/oscal" name="response-point" value="You must fill in this response point."/>
