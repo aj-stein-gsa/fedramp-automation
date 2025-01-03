@@ -89,6 +89,8 @@ This approach uses a `@class` to the prop to identify FedRAMP use cases at the r
 
 ### Approach 4
 
+This approach uses media type parameters for each encoding or data format representation of an attachment. This feature of media types is optional, as specified in IETF [RFC 6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.3). Although conceptually different and more expressive than flags, the key-value structure of media type parameters requires a balance between too generic (e.g `; oscal-use-case=foo`) and too specific (e.g. `; fedramp-use-case=poam`). Additionally, there may be some redundancy with respect to OSCAL data if FedRAMP developers do or do not explicitly use the unregistered media type sub-type (e.g. `media-type="=application/oscal+json; oscal-model=poam"`). FedRAMP developers must take care given the wide number of use cases and "parameter squatting" (with regards to generic ones such as `; oscal-use-case=...`) or how to equitably share use of use-case-specific ones.
+
 ```xml
 <resource uuid="11111111-2222-4000-8000-001000000048">
     <title>Plan of Actions and Milestones (POAM)</title>
