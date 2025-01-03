@@ -75,6 +75,8 @@ The second approach, to avoid the closed enumeration default with the first appr
 
 ### Approach 3
 
+This approach uses a `@class` to the prop to identify FedRAMP use cases at the resource level (i.e. `resource/prop/@class`). Do to the nature of `@class` and other flag-based approaches, it cannot be used to describe individual data formats or encodings of this resource per each `rlink`. Additionally, FedRAMP developers must find a balance for various use cases between generic values (e.g. `class="fedramp"`) and use-case-specific values (e.g. `class="fedramp-poam"`).
+
 ```xml
 <resource uuid="11111111-2222-4000-8000-001000000048">
     <title>Plan of Actions and Milestones (POAM)</title>
