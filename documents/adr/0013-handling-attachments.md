@@ -101,6 +101,10 @@ This approach uses media type parameters for each encoding or data format repres
 </resource>
 ```
 
+### Benefits and drawbacks of these approaches
+
+Given the options above, there are important considerations to the complexity of business logic, duplicative encoding, and ergonomics for software developers that implement against FedRAMP's customization of OSCAL.
+
 ## Decision
 
 What is the change that we're proposing and/or doing?
