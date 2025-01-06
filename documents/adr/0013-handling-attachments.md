@@ -105,10 +105,85 @@ This approach uses media type parameters for each encoding or data format repres
 
 Given the options above, there are important considerations to the complexity of business logic, duplicative encoding, and ergonomics for software developers that implement against FedRAMP's customization of OSCAL.
 
+Business logic complexity, especially for similar use cases beyond [GSA/fedramp-automation#934](https://github.com/GSA/fedramp-automation/issues/934), is a concern. With approaches that encode information at the per-resource level, developers will need potentially different `prop`s to address different scenarios, even if the `prop` is generic (e.g. `prop[@name="fedramp-use-case"]`). There are at least four different scenarios for attachments with different encodings.
+
+1. Accept either OSCAL or non-OSCAL content as equally weighted options.
+1. Prefer OSCAL attachments, even if both are present generally.
+1. Prefer non-OSCAL attachments, even if both are present generally.
+1. Prefer OSCAL or non-OSCAL content after use-case-specific processing logic occurs in one or both attachments through Metaschema-based constraints or other automated mechanisms.
+
+At a very minimum, developers consuming and implementing FedRAMP OSCAL constraints may have to account for these multiple scenarios for `prop` annotation to pass constraint validation. If not that, developers may need to expose one, two, or more prop annotations per-resource to signal the desired or intended processing mode if multiple options for a use case exist. With such an implementation, it is not sufficient to just add the proper metadata to one or both attachments. All tools, not just FedRAMP systems receiving Digital Authorization Packages, will need to implement this logic.
+
+Therefore, an optimal solution is sufficiently generic (for not just the POAM use case, but other FedRAMP use cases), but requires the least amount of business logic for CSP, 3PAO, and agency stakeholders outside of FedRAMP at the same time.
+
 ## Decision
 
-What is the change that we're proposing and/or doing?
+FedRAMP developers propose a variation of Approach 4, with short-term and long-term goals. In the short-term, it is best to increase locality to the attached data (OSCAL or non-OSCAL) and minimize additional business logic developers must implement outside of constraints. Therefore, a preferable short-term solution is to identify the OSCAL model with a media type parameter (if it is OSCAL) and identify FedRAMP-specific use case.
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam;fedramp-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;fedramp-use=poam;"/>
+</resource>
+```
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/oscal+xml; oscal-model=poam;fedramp-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;fedramp-use=poam;"/>
+</resource>
+```
+
+Although less elegant, FedRAMP developers may require explicit use of both parameters, even if that is redundant and unnecessary.
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam;fedramp-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;oscal-model=none;fedramp-use=poam;"/>
+</resource>
+```
+
+In the long-term, given community feedback and overlapping needs between FedRAMP and other OSCAL community adopters, this use-case-specific parameter _may_ be generalized for all OSCAL use-cases, or more specifically particular communities. For some FedRAMP use cases, there is a likelihood cross-community use is an important factor in the long-term (e.g. [FedRAMP's reciprocity with the US military's authorization processes](https://dodcio.defense.gov/Portals/0/Documents/Library/FEDRAMP-EquivalencyCloudServiceProviders.pdf)). Nonetheless, this transition from a `fedramp-use` to a more generalized use key (tentative examples below) require sufficient uptake of the short-term approach and feedback from community adopters. Coordination with NIST maintainers will be necessary for this long-term approach as well.
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam;oscal-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;oscal-model=none;oscal-use=poam;"/>
+</resource>
+```
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam;federal-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;oscal-model=none;federal-use=poam;"/>
+</resource>
+```
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <prop name="type" value="plan"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam;rmf-use=poam;"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;oscal-model=none;rmf-use=poam;"/>
+</resource>
+```
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+Without this change, it is impractical for FedRAMP developers and community of adopters to identify attachments, OSCAL or non-OSCAL, when multiple options exist with FedRAMP-specific use cases with their own business logic. For Approach 4 and others, community developers will need to invest effort in adding or changing the implementation. Identifying attachment data format and use case consistently for each attachment gives the most precision with limited overhead and an onramp to generalizing this approach without "namespace squatting" in the interim.
