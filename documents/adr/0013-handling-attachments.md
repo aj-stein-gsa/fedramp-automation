@@ -24,7 +24,7 @@ There are a variety of use cases for managing and cross-referencing OSCAL and no
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop name="type" value="plan"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
@@ -38,7 +38,7 @@ The first approach would have FedRAMP developers and community implementers impo
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop name="type" value="fedramp-poam"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
@@ -56,7 +56,7 @@ The second approach, to avoid the closed enumeration default with the first appr
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop ns="http://fedramp.gov/ns/oscal" name="type" value="fedramp-poam"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
@@ -68,7 +68,7 @@ The second approach, to avoid the closed enumeration default with the first appr
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop ns="http://fedramp.gov/ns/oscal" name="has-oscal-document" value="yes"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
@@ -82,21 +82,21 @@ This approach uses a `@class` to the prop to identify FedRAMP use cases at the r
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop name="type" class="fedramp-poam" value="plan"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
 
 ### Approach 4
 
-This approach uses media type parameters for each encoding or data format representation of an attachment. This feature of media types is optional, as specified in IETF [RFC 6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.3). Although conceptually different and more expressive than flags, the key-value structure of media type parameters requires a balance between too generic (e.g `; oscal-use-case=foo`) and too specific (e.g. `; fedramp-use-case=poam`). Additionally, there may be some redundancy with respect to OSCAL data if FedRAMP developers do or do not explicitly use the unregistered media type sub-type (e.g. `media-type="=application/oscal+json; oscal-model=poam"`). FedRAMP developers must take care given the wide number of use cases and "parameter squatting" (with regards to generic ones such as `; oscal-use-case=...`) or how to equitably share use of use-case-specific ones.
+This approach uses media type parameters for each encoding or data format representation of an attachment. This feature of media types is optional, as specified in IETF [RFC 6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.3). Although conceptually different and more expressive than flags, the key-value structure of media type parameters requires a balance between too generic (e.g `; oscal-use-case=foo`) and too specific (e.g. `; fedramp-use-case=poam`). Additionally, there may be some redundancy with respect to OSCAL data if FedRAMP developers do or do not explicitly use the unregistered media type sub-type (e.g. `media-type="application/oscal+json; oscal-model=poam"`). FedRAMP developers must take care given the wide number of use cases and "parameter squatting" (with regards to generic ones such as `; oscal-use-case=...`) or how to equitably share use of use-case-specific ones.
 
 ```xml
 <resource uuid="11111111-2222-4000-8000-001000000048">
     <title>Plan of Actions and Milestones (POAM)</title>
     <prop name="published" value="2023-05-31T00:00:00Z"/>
     <prop name="type" value="plan"/>
-    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="=application/xml; oscal-model=poam"/>
+    <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xml" media-type="application/xml; oscal-model=poam"/>
     <rlink href="./attachments/POAMs/SAMPLE_POAM_20230531.xlsx" media-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 </resource>
 ```
@@ -186,4 +186,4 @@ In the long-term, given community feedback and overlapping needs between FedRAMP
 
 ## Consequences
 
-Without this change, it is impractical for FedRAMP developers and community of adopters to identify attachments, OSCAL or non-OSCAL, when multiple options exist with FedRAMP-specific use cases with their own business logic. For Approach 4 and others, community developers will need to invest effort in adding or changing the implementation. Identifying attachment data format and use case consistently for each attachment gives the most precision with limited overhead and an onramp to generalizing this approach without "namespace squatting" in the interim.
+Without this change, it is impractical for FedRAMP developers and community adopters to identify attachments, OSCAL or non-OSCAL, when multiple options exist with FedRAMP-specific use cases with their own business logic. For Approach 4 and others, community developers will need to invest effort in adding or changing the implementation. Identifying attachment data format and use case consistently for each attachment gives the most precision with limited overhead. It also provides an onramp to generalize this approach without "namespace squatting" in the interim.
