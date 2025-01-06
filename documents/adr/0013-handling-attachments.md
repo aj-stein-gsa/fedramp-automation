@@ -47,7 +47,7 @@ This approach will require immediate coordination with NIST staff as the upstrea
 
 ### Approach 2
 
-The second approach, to avoid the closed enumeration default with the first approach, is to add a custom property at the resource level (i.e. `prop[@ns="http://fedramp.gov/ns/oscal" and @name="custom-property-name"]` not individual serializations or data formats in their respective `rlink`s). For this high-level approach, there are tactics: FedRAMP developers can "shadow" the core OSCAL `prop[@name="type"]` with a custom namespace and a use-case-specific value (see [Approach 2A](#approach-2a)), or add a novel property in the FedRAMP namespace and use a property name that identifies that validations will prefer or prohibit alternative formats and serializations given a superset of FedRAMP use cases (see [Approach 2B](#approach-2b)).
+The second approach, to avoid the closed enumeration default with the first approach, is to add a custom property at the resource level (i.e. `prop[@ns="http://fedramp.gov/ns/oscal" and @name="custom-property-name"]` not individual serializations or data formats in their respective `rlink`s). For this high-level approach, there are two tactics: FedRAMP developers can "shadow" the core OSCAL `prop[@name="type"]` with a custom namespace and a use-case-specific value (see [Approach 2A](#approach-2a)), or add a novel property in the FedRAMP namespace and use a property name that identifies that validations will prefer or prohibit alternative formats and serializations given a superset of FedRAMP use cases (see [Approach 2B](#approach-2b)).
 
 #### Approach 2A
 
