@@ -199,7 +199,6 @@ Examples:
   | frr292 |
   | frr293 |
   | frr294 |
-  | frr295 |
   | frr296 |
   | frr297 |
   | frr298 |
@@ -577,8 +576,6 @@ Examples:
   | frr293-PASS.yaml |
   | frr294-FAIL.yaml |
   | frr294-PASS.yaml |
-  | frr295-FAIL.yaml |
-  | frr295-PASS.yaml |
   | frr296-FAIL.yaml |
   | frr296-PASS.yaml |
   | frr297-FAIL.yaml |
