@@ -998,11 +998,6 @@
                 <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://automate.fedramp.gov/help/constraint/frr204"/>
                 <message>In a FedRAMP SSP, {$procedure-messages(./@statement-id)}</message>
             </expect>
-            <expect id="frr295" target="." test="count(../../../system-implementation/component[@type='this-system' and @uuid=$by-component-uuid]) = 1" level="ERROR">
-                <formal-name>Statement Has This System Component</formal-name>
-                <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://automate.fedramp.gov/help/constraint/frr295"/>
-                <message>In a FedRAMP SSP, each control implementation statement MUST have one "this-system" by-component.</message>
-            </expect>
         </constraints>
     </context>
 
