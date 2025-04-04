@@ -6405,6 +6405,20 @@
 				<prop ns="http://fedramp.gov/ns/oscal" name="response-point" value="You must fill in this response point."/>
 			</add>
 		</alter>
+		<alter control-id="pe-6.2">
+			<!-- See upstream bug report usnistgov/OSCAL#ABCD why FedRAMP strips the anchor tag to an adjacent parameter. -->
+			<remove by-id="pe-06.02_odp.03"/>
+			<add position="after" by-id="pe-06.02_odp.02">
+				<param id="pe-06.02_odp.03">
+					<prop name="alt-identifier" ns="http://csrc.nist.gov/ns/oscal" value="pe-6.2_prm_3"/>
+					<prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="PE-06(02)_ODP[03]" class="sp800-53a"/>
+					<label>automated mechanisms</label>
+					<guideline>
+						<p>automated mechanisms used to recognize classes or types of intrusions and initiate response actions (defined in PE-06(02)_ODP) are defined;</p>
+					</guideline>
+				</param>			
+			</add>
+		</alter>
 		<alter control-id="pe-6.4">
 			<add position="starting" by-id="pe-6.4_obj">
 				<prop ns="http://fedramp.gov/ns/oscal" name="response-point" value="You must fill in this response point."/>
@@ -9005,7 +9019,7 @@
 			<add position="after" by-id="sc-13_gdn">
 				<part id="sc-13_fr" name="item" ns="http://fedramp.gov/ns/oscal">
 					<title>SC-13 Additional FedRAMP Requirements and Guidance</title>
-
+					
 					<part id="sc-13_fr_gdn.1" name="guidance" ns="http://fedramp.gov/ns/oscal">
 						<prop name="label" value="Guidance:"/>
 						<p>This control applies to all use of cryptography. In addition to encryption, this includes functions such as hashing, random number generation, and key generation. Examples include the following:</p>
