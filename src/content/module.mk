@@ -39,6 +39,8 @@ build-content:
 	@echo "Producing artifacts for SAR..."
 	$(OSCAL_CLI) convert -f $(SRC_DIR)/content/rev5/templates/sar/xml -o $(DIST_DIR)/content/rev5/templates/sar -s
 
+	@echo "Resolving FedRAMP tailoring catalog ..."
+	$(OSCAL_CLI) resolve -f $(SRC_DIR)/content/rev5/baselines/xml/FedRAMP_rev5_catalog_tailoring_profile.xml -o $(XML_DIR)/FedRAMP_rev5_catalog_tailoring-resolved-profile_catalog.xml -s	
 	@echo "Resolving FedRAMP HIGH baseline profile..."
 	$(OSCAL_CLI) resolve -f $(SRC_DIR)/content/rev5/baselines/xml/FedRAMP_rev5_HIGH-baseline_profile.xml -o $(XML_DIR)/FedRAMP_rev5_HIGH-baseline-resolved-profile_catalog.xml -s
 	@echo "Resolving FedRAMP MODERATE baseline profile..."
