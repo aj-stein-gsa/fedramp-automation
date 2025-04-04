@@ -211,6 +211,7 @@ Examples:
   | frr305 |
   | frr306 |
   | frr307 |
+  | frr512 |
 #END_DYNAMIC_CONSTRAINT_IDS
 
 @constraints

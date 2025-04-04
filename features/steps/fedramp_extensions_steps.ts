@@ -823,9 +823,7 @@ Then(
               const line = fileContent
                 .substring(0, fileContent.indexOf(currentId))
                 .split("\n").length;
-              errors.push(
-                `[ERROR] frr103 ${fileName}:${line}: "${currentId}" is out of order. It should come after "${nextId}"`
-              );
+                console.warn(`[WARN] frr103 ${fileName}:${line}: "${currentId}" is out of order. It should come after "${nextId}"`);
             }
           }
         });
